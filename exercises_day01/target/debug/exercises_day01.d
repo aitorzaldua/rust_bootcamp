@@ -1,0 +1,1 @@
+/home/aitorzaldua/rust_bootcamp/exercises_day01/target/debug/exercises_day01: /home/aitorzaldua/rust_bootcamp/exercises_day01/src/main.rs /home/aitorzaldua/rust_bootcamp/exercises_day01/src/reverse.rs
