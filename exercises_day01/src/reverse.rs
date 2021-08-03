@@ -1,15 +1,12 @@
 
 
-pub fn reverse_string (input: &String) {
+pub fn reverse_string (input: &String) -> String{
 
-    for i in input.iter.enumerate {
+    let reverse: String = input.chars().rev().collect();
 
-        println!("{}", i);
-
-
-    }
+    reverse
 
 
-    
 }
 
+  
