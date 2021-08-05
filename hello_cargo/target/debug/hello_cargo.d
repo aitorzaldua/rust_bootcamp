@@ -1,0 +1,1 @@
+/home/aitorzaldua/rust_bootcamp/hello_cargo/target/debug/hello_cargo: /home/aitorzaldua/rust_bootcamp/hello_cargo/src/lib.rs /home/aitorzaldua/rust_bootcamp/hello_cargo/src/main.rs /home/aitorzaldua/rust_bootcamp/hello_cargo/src/print.rs
