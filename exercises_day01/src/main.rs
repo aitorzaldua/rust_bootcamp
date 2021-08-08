@@ -52,14 +52,18 @@ println!("{:?}", result_03);
 
 //????assert_eq!([-6,1,2,2,8,12], result_03);?????
 
-let mut input_04 = [8,12,53,1,2,-6,2];
+// (D) remove a given character from a string
+// TESTS:** 
+// removeChar("Hello World", "H")            // => "ello World"
+// removeChar("Hi, how are you doing?", "i") // => "H, how are you dong?"
 
-input_04.sort();
+let input_04 = String::from("Hi, how are you doing?");
 
-println!("{:?}", result_03);
+let remove_char = 'i';
 
+let result_04 = str::replace(&input_04, remove_char, "");
 
-
+println!("{}", result_04);
 
 }
 
