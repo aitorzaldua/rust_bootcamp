@@ -11,7 +11,7 @@ pub struct Person {
 
 impl fmt::Display for Person {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{} {} is {} years old", self.firstname, self.lastname, self.age)
+        write!(f, "Your name is: {} {}. Your age is: {}", self.firstname, self.lastname, self.age)
     }
 }
 
@@ -24,7 +24,7 @@ impl Person {
     }
 
     pub fn set_last_name (&mut self) {
-        println!("Please insert your name");
+        println!("Please type your name");
         let mut new_firstname = String::new();
 
         io::stdin()
@@ -33,7 +33,7 @@ impl Person {
 
         new_firstname = new_firstname.trim().to_string();
 
-        println!("Please inser your surname");
+        println!("Please type your surname");
 
         let mut new_lastname = String::new();
 
@@ -43,7 +43,8 @@ impl Person {
 
         new_lastname = new_lastname.trim().to_string();
 
-        println! ("You are {} {}", new_firstname, new_lastname);
+        self.firstname = new_firstname;
+        self.lastname = new_lastname;
 
 
     }

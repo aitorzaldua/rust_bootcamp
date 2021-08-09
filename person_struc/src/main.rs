@@ -15,7 +15,7 @@ fn main() {
         age: 25,
     };
 
-    println!("You are {} {}", new_person.firstname, new_person.lastname);
+    println!("Are you {} {}?", new_person.firstname, new_person.lastname);
 
 //2.- Requesting the info from the user:
 
@@ -28,15 +28,18 @@ fn main() {
 
     check_data = check_data.trim().to_lowercase();
 
-    println!("Your answer is  {:?}", check_data);
 
 //3.- Modifying the instance
 
     if check_data == "no" {
         new_person.set_last_name();
+
+        //println!("You are {} {}", new_person.firstname, new_person.lastname);
+
+        println!("{}", new_person.to_string());
     }
     else if check_data == "yes" {
-        println!("YES!, That´s great, thank you");
+        println!("Thank you, Mr. {}", new_person.lastname);
     }
     else {
         println!("Please, type yes or no")
