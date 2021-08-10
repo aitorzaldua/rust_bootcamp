@@ -1,4 +1,3 @@
-//use person_struc::now;
 use person_struc::mod_person;
 
 use std::io;
@@ -44,5 +43,10 @@ fn main() {
     else {
         println!("Please, type yes or no")
     }
+
+//4.- Updating the age:
+
+    new_person.happy_birthday();
+    println!("Happy birthday {}! You are {} years old now!", new_person.firstname, new_person.age);
 
 }
