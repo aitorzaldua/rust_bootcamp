@@ -1,22 +1,31 @@
-extern crate chrono;
 use chrono::prelude::*;
-//use std::time::{ SystemTime, UNIX_EPOCH };
+use std::time::SystemTime;
 
 fn main() {
-    let date = Utc::today().format("%Y-%m-%d");
-
-    println! ("Today is {}", date);
 
     struct Date {
-        date_str: DateTime<Utc>,
-        //unix_timestamp: u128,
+        date_str: DateTime<Local>,
+        unix_timestamp: SystemTime,
 
     }
 
+    impl Date {
+        fn get_formatted_date_str (&mut self) {
+
+
+        }
+    }
+
     let new_date = Date {
-        date_str: Utc::now(),
-        //unix_timestamp: u128,
+        date_str: Local::now(),
+        unix_timestamp: SystemTime::now(),
     };
 
-    println!("{}", new_date.date_str);
+    let date_formated = new_date.date_str.format("%Y-%m-%d");
+    println!("{}", date_formated);
+    println!("{:?}", new_date.unix_timestamp);
+
+    
+
+
 }
