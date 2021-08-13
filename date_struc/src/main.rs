@@ -1,5 +1,22 @@
+//Date Struct
+
+//1. create a struct that represents a **Date,** and has the properties:
+//   1. `date_str` (string of format `YYYY-MM-DD` ⇒ e.g. `2021-08-02`)
+//    2. `unix_timestamp`
+//2. create an initializer function (constructor) named `new`, such that you can create a Date with the following syntax: `Date::new("2021-08-25")`
+//3. implement a function `get_unix` that returns the unix timestamp of the date.
+//4. implement a function `get_date_str` that returns the `date_str` of the date.
+//5. implement a function `get_formatted_date_str` that returns a date string formatted as following: "2. August 2021"
+
+// TEST:
+//    let d = Date::new("2021-08-02");
+//    d.get_formatted_date_str(); // => "2. August 2021"
+//    d.get_date_str();           // => "2021-08-02"
+//    d.get_unix();               // => 1627862400
+
+
 use chrono::prelude::*;
-use std::time::SystemTime;
+use std::time::{SystemTime, UNIX_EPOCH };
 
 fn main() {
 
@@ -51,6 +68,15 @@ fn main() {
             d.to_string()
 
         }
+
+        fn get_unix (&mut self) -> u128 {
+            let duration = self.unix_timestamp
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+            ;
+
+            duration.as_secs() as u128 * 1000 + duration.subsec_millis() as u128
+        }
     }
 
 
@@ -73,8 +99,9 @@ fn main() {
     //Implement a function get_date_str that returns the date_str of the date: "2021-08-02":
     println!("{}",new.get_date_str());
 
-    //Implement a function get_unix that returns the unix timestamp of the date: 1627862400
-    println!("{:?}", new.unix_timestamp);
+    //Implement a function get_unix that returns the unix timestamp of the date: 1627862400:
+
+    println!("{:?}", new.get_unix());
 
 
 
