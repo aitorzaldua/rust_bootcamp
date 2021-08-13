@@ -10,30 +10,25 @@ fn main() {
     }
 
     impl Date {
-        fn get_formatted_date_str (&mut self) -> String{
+        fn get_formatted_date_str (&mut self) -> String {
             let day = self.date_str.day();
             let month = self.date_str.month();
             let year = self.date_str.year();
 
-
-            let month_str = String::new();
-
-            println!("{:?}", month);
-
             match month {
-                1 => month_str.push("January"),
-                2 => "Febraury"
-                3 => "March"
-                4 => "April"
-                5 => "May"
-                6 => "June"
-                7 => "July"
-                8 => "August"
-                9 => "September"
-                10 => "October"
-                11 => "November"
-                12 => "December"
-                _=>println!("nothing"),
+                1 => "January".to_string(),
+                2 => "Febraury".to_string(),
+                3 => "March".to_string(),
+                4 => "April".to_string(),
+                5 => "May".to_string(),
+                6 => "June".to_string(),
+                7 => "July".to_string(),
+                8 => "August".to_string(),
+                9 => "September".to_string(),
+                10 => "October".to_string(),
+                11 => "November".to_string(),
+                12 => "December".to_string(),
+                _=> "panic! ".to_string(),
             }
 
 
@@ -46,10 +41,12 @@ fn main() {
     };
 
     let date_formated = new_date.date_str.format("%Y-%m-%d");
-    println!("{:?}", date_formated);
+    println!("{}", date_formated);
     println!("{:?}", new_date.unix_timestamp);
 
-    new_date.get_formatted_date_str();
+    println!("{}", new_date.get_formatted_date_str());
+
+
 
 
 }
