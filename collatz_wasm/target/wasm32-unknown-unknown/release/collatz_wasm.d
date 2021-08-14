@@ -1,0 +1,1 @@
+/home/aitorzaldua/rust_bootcamp/collatz_wasm/target/wasm32-unknown-unknown/release/collatz_wasm.wasm: /home/aitorzaldua/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-bindgen-0.2.75/build.rs /home/aitorzaldua/rust_bootcamp/collatz_wasm/src/lib.rs
