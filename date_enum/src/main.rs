@@ -24,7 +24,6 @@ fn main() {
         Autumn,
     }
 
-
     struct Date {
 
         date_str: DateTime<Local>,
@@ -35,27 +34,49 @@ fn main() {
 
     impl Date {
         fn get_season(&mut self) -> String {
-            //Primavera: Equinoccio de marzo 3: día 20 y a veces 19
-            //Verano: Solsticio de junio 6: días 20 o 21
-            //Otoño: Equinoccio de septiembre 9: día 22 y a veces 23
-            //Invierno: Solsticio de diciembre 12: día 21 a veces 22
+
             let actual_month = self.date_str.month().to_string().parse::<i32>().unwrap();
 
             let actual_day = self.date_str.day().to_string().parse::<i32>().unwrap();
 
-
             let season = match actual_month {
                 1 | 2 =>  "Winter",
-                3     => {fn match_day (actual_day: i32) -> String {
-                    "Winter"
-                }},
+                3    => {
+                    if actual_day < 20 {
+                        "Winter"
+                    }
+                    else {
+                        "Spring"
+                    }
+                },
                 4 | 5 => "Spring",
-                6     => "",
+                6     => {
+                    if actual_day < 21 {
+                        "Spring"
+                    }
+                    else {
+                        "Summer"
+                    }
+                },
                 7 | 8 => "Summer",
-                9     => "",
+                9     => {
+                    if actual_day < 22 {
+                        "Summer"
+                    }
+                    else {
+                        "Autumn"
+                    }
+                },
                 10|11 => "Autumn",
-                12    => "",
-                _ => "panic!",
+                12    => {
+                    if actual_day < 21 {
+                        "Autumn"
+                    }
+                    else {
+                        "Winter"
+                    }
+                },
+                _ => "Error! Invalid Entry",
 
             };
 
@@ -67,13 +88,10 @@ fn main() {
     let mut august = Date {
         date_str: Local::now(),
         month: Month::August,
-        season: Season::Summer,
-
+        season: Season::Summer
 
     };
 
-
     println! ("{}" , august.get_season());
-   
 
 }
