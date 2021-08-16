@@ -129,7 +129,34 @@ fn main() {
 
     println! ("********************************");
 
+// EXERCISE F: Chunk an array into an array of arrays
+// => what data structur would you use for that in Rust
+// => can you even create an Array of Arrays in Rust?
+// TESTS:
+// chunkArray([1,2,3,4,5,1,2,3,4,5,1,2,3], 5)
+//        => [[1,2,3,4,5],[1,2,3,4,5],[1,2,3]]
+// chunkArray([1,2,3,4,5,1,2,3,4,5,1,2,3], 3)
+//        => [[1,2,3],[4,5,1],[2,3,4],[5,1,2],[3]]
 
+
+let input_f1 = [1,2,3,4,5,1,2,3,4,5,1,2,3];
+let chunk_number_f1 = 5;
+let input_f2 = [1,2,3,4,5,1,2,3,4,5,1,2,3];
+let chunk_number_f2 = 3;
+
+let input_f1_to_vec = input_f1.to_vec();
+let input_f2_to_vec = input_f2.to_vec();
+
+
+fn slice_array (input: Vec<i32>, chunk_number: usize){
+
+    let slice_1 = &input[..chunk_number];
+    let input = &input[chunk_number..];
+    println!("{:?} - {:?}", slice_1, input);
+
+}
+
+slice_array(input_f1_to_vec, chunk_number_f1);
 
 
 }
