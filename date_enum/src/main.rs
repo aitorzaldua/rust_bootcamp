@@ -88,9 +88,9 @@ fn main() {
     let mut august = Date {
         date_str: Local::now(),
         month: Month::August,
-        season: Season::Summer
+        season: Season::Summer,
 
-    };
+    }; 
 
     println! ("{}" , august.get_season());
 
