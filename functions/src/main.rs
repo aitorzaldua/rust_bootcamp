@@ -1,6 +1,6 @@
-use std::cmp;  //max of 2
-use std::collections::HashMap;
-use core::array::IntoIter;
+use std::cmp;  //Exercise B: max of 2
+use std::collections::HashMap; //Exercise F: Chunk array
+
 
 fn main() {
 
@@ -236,16 +236,21 @@ println! ("********************************");
 // exercise I: flatten an array of an array.
 // flatArr([1,2,3],[4,5,6]) // => [1,2,3,4,5,6]
 
-//let input_i: vec!([1,2,3],[4,5,6]);
+    let input_i =  vec!([1,2,3],[4,5,6]);
+    let mut vec_result = vec![];
 
-let v = vec![1, 2, 3];
-let new_v: Vec<_> = v.iter()
-    .flat_map(|&x| core::array::IntoIter::new([x, x * x]))
-    .collect();
+    for i in input_i {
 
-println! ("{:?}", new_v);
+        for x in i {
+
+            
+            vec_result.push(x);
+
+            
+        }
+    }
+    println!("{:?}", vec_result);
+
 
 }
-
-
 
