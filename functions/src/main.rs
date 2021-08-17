@@ -1,4 +1,6 @@
 use std::cmp;  //max of 2
+use std::collections::HashMap;
+use core::array::IntoIter;
 
 fn main() {
 
@@ -96,17 +98,15 @@ fn main() {
 // removeChar("Hi, how are you doing?", "i") // => "H, how are you dong?"
 
     let input_d1 = String::from("Hello World");
-    let remove_char_d1 = 'H';
     let input_d2 = String::from("Hi, how are you doing?");
-    let remove_char_d2 = 'i';
 
-    let result_d1 = str::replace(&input_d1, remove_char_d1, "");
-    let result_d2 = str::replace(&input_d2, remove_char_d2, "");
+    let result_d1 = str::replace(&input_d1, "H", "");
+    let result_d2 = str::replace(&input_d2, "i", "");
 
     println!("EXERCISE D: Remove a given character from a string.");
 
-    println!("Let´s remove {} from {} -> {}", remove_char_d1, input_d1, result_d1);
-    println!("Let´s remove {} from {} -> {}", remove_char_d2, input_d2, result_d2);
+    println!("Let´s remove H from {} -> {}", input_d1, result_d1);
+    println!("Let´s remove i from {} -> {}", input_d2, result_d2);
 
     println! ("********************************");
 
@@ -139,26 +139,113 @@ fn main() {
 //        => [[1,2,3],[4,5,1],[2,3,4],[5,1,2],[3]]
 
 
-let input_f1 = [1,2,3,4,5,1,2,3,4,5,1,2,3];
-let chunk_number_f1 = 5;
-let input_f2 = [1,2,3,4,5,1,2,3,4,5,1,2,3];
-let chunk_number_f2 = 3;
+let input_f1 = vec![1,2,3,4,5,1,2,3,4,5,1,2,3];
+let input_f2 = vec![1,2,3,4,5,1,2,3,4,5,1,2,3];
 
-let input_f1_to_vec = input_f1.to_vec();
-let input_f2_to_vec = input_f2.to_vec();
+fn slice_array (input: &Vec<i32>, chunk_number: usize) -> Vec<&[i32]>{
 
+    let mut vec_result = vec![];
+    let mut count_1 = input.len();
+    let mut count_2 = 0;
 
-fn slice_array (input: Vec<i32>, chunk_number: usize){
+    loop {
 
-    let slice_1 = &input[..chunk_number];
-    let input = &input[chunk_number..];
-    println!("{:?} - {:?}", slice_1, input);
+        if count_1 >= chunk_number {
+
+            let slice_1 = &input[count_2..chunk_number + count_2];
+            vec_result.push(slice_1);
+
+            count_1 = count_1 - chunk_number;
+            count_2 = count_2 + chunk_number;
+
+        }
+        else {
+            let slice_1 = &input[count_2..];
+            vec_result.push(slice_1);
+
+            break
+        }
+
+    }
+
+   vec_result
 
 }
 
-slice_array(input_f1_to_vec, chunk_number_f1);
+let result_f1 = slice_array(&input_f1, 5);
+let result_f2 = slice_array(&input_f2, 3);
 
+println!("EXERCISE F: Chunk an array into an array of arrays.");
+
+println!("Chunk array with {:?} and divisor 5 =>{:?}", input_f1, result_f1);
+println!("Chunk array with {:?} and divisor 3 =>{:?}", input_f2, result_f2);
+
+println! ("********************************");
+
+// EXERCISE G: Count occurencies all distinct values of an array and return as dictionary.
+// TESTS:
+// createDict(["a","b","a","a","c","c","a"])
+//         => {"a":4, "b":1, "c":2}
+
+
+    let input_g1 = vec!["a","b","a","a","c","c","a"];
+
+    let mut result_g1: HashMap<String, usize> = HashMap::new();
+
+    for &element in &input_g1 {
+        let count = input_g1.iter().filter(|&&n| n == element).count();
+        result_g1.insert(element.to_string(), count);
+    }
+
+    println!("EXERCISE G: Count occurencies all distinct values of an array");
+
+    println!("Counting occurencies in array: {:?} => {:?}", input_g1, result_g1);
+
+    println! ("********************************");
+
+
+// EXERCISE H: Multiply each element of the array with x
+// multiplyByX([1,2,3,4],10); => [10,20,30,40]
+// multiplyByX([1,12,33,9],1.5); => [1.5,18,49.5,13.5]
+
+    let input_h1 = vec![1,2,3,4];
+    let input_h2 = vec![1,12,33,9];
+
+    let ih1_to_float: Vec<f32> = input_h1.iter().map(|x| *x as f32).collect();
+    let ih2_to_float: Vec<f32> = input_h2.iter().map(|x| *x as f32).collect();
+
+
+
+    fn multiply_by_x (vec: Vec<f32>, multi: f32) -> Vec<f32>{
+
+        vec.iter().map(|x| x * multi).collect()
+
+    }
+
+    let result_h1 = multiply_by_x(ih1_to_float, 10 as f32);
+    let result_h2 = multiply_by_x(ih2_to_float, 1.5);
+
+    println!("EXERCISE H: Multiply each element of the array with x.");
+
+    println!("{:?} * 10 = {:?}", input_h1, result_h1);
+    println!("{:?} * 1.5 = {:?}", input_h2, result_h2);
+
+    println! ("********************************");
+
+
+// exercise I: flatten an array of an array.
+// flatArr([1,2,3],[4,5,6]) // => [1,2,3,4,5,6]
+
+//let input_i: vec!([1,2,3],[4,5,6]);
+
+let v = vec![1, 2, 3];
+let new_v: Vec<_> = v.iter()
+    .flat_map(|&x| core::array::IntoIter::new([x, x * x]))
+    .collect();
+
+println! ("{:?}", new_v);
 
 }
+
 
 
