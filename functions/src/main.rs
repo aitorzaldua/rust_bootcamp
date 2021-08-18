@@ -237,19 +237,21 @@ println! ("********************************");
 // flatArr([1,2,3],[4,5,6]) // => [1,2,3,4,5,6]
 
     let input_i =  vec!([1,2,3],[4,5,6]);
-    let mut vec_result = vec![];
+    let mut result_i = vec![];
 
     for i in input_i {
 
         for x in i {
 
-            
-            vec_result.push(x);
-
-            
+            result_i.push(x);
         }
     }
-    println!("{:?}", vec_result);
+
+    println!("EXERCISE I: flatten an array of an array.");
+
+    println!("Let´s flatten this array: ([1,2,3],[4,5,6]) => {:?}", result_i);
+
+    println! ("************* THE END *******************");
 
 
 }
