@@ -216,14 +216,14 @@ println! ("********************************");
 
 
 
-    fn multiply_by_x (vec: Vec<f32>, multi: f32) -> Vec<f32>{
+    fn multiply (vec: Vec<f32>, multi: f32) -> Vec<f32>{
 
         vec.iter().map(|x| x * multi).collect()
 
     }
 
-    let result_h1 = multiply_by_x(ih1_to_float, 10 as f32);
-    let result_h2 = multiply_by_x(ih2_to_float, 1.5);
+    let result_h1 = multiply(ih1_to_float, 10 as f32);
+    let result_h2 = multiply(ih2_to_float, 1.5);
 
     println!("EXERCISE H: Multiply each element of the array with x.");
 
