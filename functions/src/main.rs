@@ -182,7 +182,7 @@ println!("Chunk array with {:?} and divisor 3 =>{:?}", input_f2, result_f2);
 
 println! ("********************************");
 
-// EXERCISE G: Count occurencies all distinct values of an array and return as dictionary.
+// EXERCISE G: Count concurrences  all distinct values of an array and return as dictionary.
 // TESTS:
 // createDict(["a","b","a","a","c","c","a"])
 //         => {"a":4, "b":1, "c":2}
@@ -197,9 +197,9 @@ println! ("********************************");
         result_g1.insert(element.to_string(), count);
     }
 
-    println!("EXERCISE G: Count occurencies all distinct values of an array");
+    println!("EXERCISE G: Count concurrences  all distinct values of an array");
 
-    println!("Counting occurencies in array: {:?} => {:?}", input_g1, result_g1);
+    println!("Counting concurrences  in array: {:?} => {:?}", input_g1, result_g1);
 
     println! ("********************************");
 
