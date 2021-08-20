@@ -6,6 +6,7 @@
 
 use std::io;
 use rand::Rng;
+use std::{thread, time};
 
 
 
@@ -37,6 +38,7 @@ fn main() {
     }
 
     println!("The initial list is: {:?}", list);
+    let initial_list = list.clone();
 
 // for [24,2,15,12] should print the following to the console:
 //████████████████████████░░░░░░
@@ -44,22 +46,29 @@ fn main() {
 //███████████████░░░░░░░░░░░░░░░
 //████████████░░░░░░░░░░░░░░░░░░
 
-for data in &list {
-    let mut chain = String::new();
-    loop{
-        for _x in 1..data+1 {
-            chain.push_str("█");
+
+    for data in &list {
+        let mut chain = String::new();
+
+        loop{
+            for _x in 1..data+1 {
+                chain.push_str("█");
+            }
+            let add_to_chain = 30 - data;
+            for _i in 1..add_to_chain+1 {
+                chain.push_str("░");
+            }
+            println!("{}", chain);
+            chain.clear();
+            break
+
         }
-        println!("{}", chain);
-        chain.clear();
-        break
-
     }
-}
 
+    let pause_1 = time::Duration::from_millis(4000);
+    thread::sleep(pause_1);
 
-
-//Bubble Sort
+    //Bubble Sort with progress bar
 
     let mut len = list.len();
 
@@ -69,9 +78,33 @@ for data in &list {
 
         for i in 1..len {
 
+            print!("{esc}c", esc = 27 as char);
+            let pause_2 = time::Duration::from_millis(300);
+
+            thread::sleep(pause_2);
+
             if list[i - 1] > list[i] {
                 list.swap(i - 1, i);
                 counter = i;
+                //here:
+                println! ("Sorting in progress, please wait...{:?}", list);
+                for data in &list {
+                    let mut chain = String::new();
+
+                    loop{
+                        for _x in 1..data+1 {
+                            chain.push_str("█");
+                        }
+                        let add_to_chain = 30 - data;
+                        for _i in 1..add_to_chain+1 {
+                            chain.push_str("░");
+                        }
+                        println!("{} ", chain);
+                        chain.clear();
+                        break
+
+                    }
+                }
             }
         }
         if counter == 0 {
@@ -81,8 +114,28 @@ for data in &list {
 
     }
 
-    println!("The sorted list, using Bubble Sort, is: {:?}", list);
+    //final print statement:
 
+    print!("{esc}c", esc = 27 as char);
+    println!("The initial, random, list was {:?}", initial_list);
+    println!("The sorted list, using Bubble Sort, is: {:?}", list);
+    for data in &list {
+        let mut chain = String::new();
+
+        loop{
+            for _x in 1..data+1 {
+                chain.push_str("█");
+            }
+            let add_to_chain = 30 - data;
+            for _i in 1..add_to_chain+1 {
+                chain.push_str("░");
+            }
+            println!("{}", chain);
+            chain.clear();
+            break
+
+        }
+    }
 
 
 }
