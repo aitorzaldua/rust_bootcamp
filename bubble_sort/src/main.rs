@@ -3,13 +3,19 @@
 //implement a function print_vector that take in a single argument of type vector and prints a progress bar for each value (0 ⇒ 0%, 30 ⇒ 100%). 
 //You can use the following unicode to display a nice progress bar: EMPTY: ░  FILLED: █  
 
+
+use std::io;
+use rand::Rng;
+
+
+
 fn main() {
-    use std::io;
+
 
     //Asking to the user
-    println!("Bubble Sort");
-    println!("We are going to generate a random list.");
-    println!("Please, insert the length of the list");
+    println!("***********   BUBBLE SORT   *************");
+    println!("We are going to generate a random list of numbers between 1 and 30");
+    println!("Please, insert the length of the list, between 3 and 30:");
 
     let mut input_01 = String::new();
 
@@ -17,13 +23,43 @@ fn main() {
         .read_line(&mut input_01)
         .expect("Failed to read line");
 
-    let input_01: i32 = input_01.trim().parse().expect("Please type a number!");
+    let user_input: i32 = input_01.trim().parse().expect("Please type a number!");
+
 
     //Generating the random list of numbers (0<number<30)
 
+    let mut list: Vec<i32> = Vec::new();
+
+    for _i in 1..user_input + 1{
+        let number = rand::thread_rng().gen_range(1, 31);
+        list.push(number);
+
+    }
+
+    println!("The initial list is: {:?}", list);
+
+// for [24,2,15,12] should print the following to the console:
+//████████████████████████░░░░░░
+//██░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+//███████████████░░░░░░░░░░░░░░░
+//████████████░░░░░░░░░░░░░░░░░░
+
+for data in &list {
+    let mut chain = String::new();
+    loop{
+        for _x in 1..data+1 {
+            chain.push_str("█");
+        }
+        println!("{}", chain);
+        chain.clear();
+        break
+
+    }
+}
 
 
-    let mut list:Vec<u32> = vec![24,2,15,12];
+
+//Bubble Sort
 
     let mut len = list.len();
 
@@ -45,7 +81,7 @@ fn main() {
 
     }
 
-    println!("{:?}", list);
+    println!("The sorted list, using Bubble Sort, is: {:?}", list);
 
 
 
