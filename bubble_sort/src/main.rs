@@ -8,12 +8,10 @@ use std::io;
 use rand::Rng;
 use std::{thread, time};
 
-
-
 fn main() {
 
 
-    //Asking to the user
+//Requesting info to the user
     println!("***********   BUBBLE SORT   *************");
     println!("We are going to generate a random list of numbers between 1 and 30");
     println!("Please, insert the length of the list, between 3 and 30:");
@@ -65,10 +63,12 @@ fn main() {
         }
     }
 
+//Just a pause to see the first part with time
+
     let pause_1 = time::Duration::from_millis(4000);
     thread::sleep(pause_1);
 
-    //Bubble Sort with progress bar
+//Bubble Sort with progress bar
 
     let mut len = list.len();
 
@@ -114,8 +114,7 @@ fn main() {
 
     }
 
-    //final print statement:
-
+//final print statement:
     print!("{esc}c", esc = 27 as char);
     println!("The initial, random, list was {:?}", initial_list);
     println!("The sorted list, using Bubble Sort, is: {:?}", list);
@@ -136,6 +135,4 @@ fn main() {
 
         }
     }
-
-
 }

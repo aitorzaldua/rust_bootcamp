@@ -1,4 +1,5 @@
-// TESTS
+// If even x 2 , if odd x 3 +1 ---> should end with 4,2,1.
+//TESTS
 //collatz(5)  => [5,16,8,4,2,1]
 //collatz(12) => [12,6,3,10,5,16,8,4,2,1]
 
